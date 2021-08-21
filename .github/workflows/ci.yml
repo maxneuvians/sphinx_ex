@@ -1,20 +1,41 @@
 on: push
-
+defaults:
+  run:
+    working-directory: ./sphinx_ex
 jobs:
   test:
     runs-on: ubuntu-latest
     name: OTP ${{matrix.otp}} / Elixir ${{matrix.elixir}}
+    services:
+      postgres:
+        image: postgres:12
+        ports: ['5432:5432']
+        env:
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
     strategy:
       matrix:
         otp: ['23']
         elixir: ['1.11.2']
+    env:
+      MIX_ENV: test
     steps:
       - uses: actions/checkout@v2
       - uses: erlef/setup-beam@v1
         with:
           otp-version: ${{matrix.otp}}
           elixir-version: ${{matrix.elixir}}
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
       - run: mix deps.get
-        working-directory: ./sphinx_ex
+      - run: mix deps.compile
+      - run: cd assets && yarn install --frozen-lockfile
       - run: mix test
-        working-directory: ./sphinx_ex
+        env:
+          DB_PASSWORD: postgres
+          DB_HOST: postgres
