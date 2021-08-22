@@ -3,6 +3,13 @@ defmodule SphinxEx.Helpers.BoardTest do
 
   import SphinxEx.Helpers.Board
 
+  test "to_map" do
+    s = "0" <> String.duplicate("1", 47) <> "2"
+    map = to_map(s)
+    assert map[{0, 0}] == "0"
+    assert map[{6, 6}] == "2"
+  end
+
   test "validate_board" do
     assert validate_board("") == [:invalid_size, :entrance_missing, :treasure_missing]
 

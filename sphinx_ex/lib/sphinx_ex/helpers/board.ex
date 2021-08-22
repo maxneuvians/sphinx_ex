@@ -1,4 +1,16 @@
 defmodule SphinxEx.Helpers.Board do
+  @spec to_map(binary) :: map
+  def to_map(s) do
+    s
+    |> String.graphemes()
+    |> Enum.with_index()
+    |> Enum.reduce(%{}, fn {v, index}, m ->
+      x = div(index, 7)
+      y = rem(index, 7)
+      Map.put(m, {x, y}, v)
+    end)
+  end
+
   @spec validate_board(binary) :: list
   def validate_board(s) do
     frequency = count_frequency(s)
