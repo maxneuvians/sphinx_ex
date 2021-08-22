@@ -10,6 +10,17 @@ defmodule SphinxEx.Helpers.BoardTest do
     assert map[{6, 6}] == "2"
   end
 
+  test "to_string" do
+    m = %{{0, 0} => "0", {0, 1} => "0", {0, 2} => "0",}
+    assert SphinxEx.Helpers.Board.to_string(m) == String.duplicate("0", 49)
+  end
+
+  test "conversion" do
+    s = "0" <> String.duplicate("1", 47) <> "2"
+    m = to_map(s)
+    assert SphinxEx.Helpers.Board.to_string(m) == s
+  end
+
   test "validate_board" do
     assert validate_board("") == [:invalid_size, :entrance_missing, :treasure_missing]
 

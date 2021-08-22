@@ -11,6 +11,18 @@ defmodule SphinxEx.Helpers.Board do
     end)
   end
 
+  @spec to_string(map) :: binary
+  def to_string(m) do
+    # Because maps don't perserve order we can't just concat the values
+    0..6
+    |> Enum.reduce("", fn x, x_acc ->
+      0..6
+      |> Enum.reduce(x_acc, fn y, y_acc ->
+        y_acc <> Map.get(m, {x,y}, "0")
+      end)
+    end)
+  end
+
   @spec validate_board(binary) :: list
   def validate_board(s) do
     frequency = count_frequency(s)
