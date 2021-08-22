@@ -6,7 +6,9 @@ defmodule SphinxEx.Helpers.QuinaryTest do
   test "convert_to_decimal" do
     assert convert_to_decimal(String.duplicate("0", 48) <> "0") == 0
     assert convert_to_decimal(String.duplicate("0", 46) <> "101") == 26
-    assert convert_to_decimal(String.duplicate("5", 49)) == 22204460492503132502621863395983360
+
+    assert convert_to_decimal(String.duplicate("5", 49)) ==
+             22_204_460_492_503_132_502_621_863_395_983_360
   end
 
   test "convert_to_quinary" do
