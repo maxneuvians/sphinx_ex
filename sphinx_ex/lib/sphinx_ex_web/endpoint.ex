@@ -7,7 +7,7 @@ defmodule SphinxExWeb.Endpoint do
   @session_options [
     store: :cookie,
     key: "_sphinx_ex_key",
-    signing_salt: "HIG+BvXe"
+    signing_salt: "3YLywCo2"
   ]
 
   socket "/socket", SphinxExWeb.UserSocket,

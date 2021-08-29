@@ -13,10 +13,10 @@ config :sphinx_ex,
 # Configures the endpoint
 config :sphinx_ex, SphinxExWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "0yversGRI3tfYjclKwMOJdDJwyQcQkr6wVAAb0iX0w1qD5q0c+f4Um5+yPkvfv24",
+  secret_key_base: "jsNLRh8WxYm3C2lQj4nstYj/CDynRkMen8tLXUsolxZpYswO95uNBRUhscWwNIvY",
   render_errors: [view: SphinxExWeb.ErrorView, accepts: ~w(html json), layout: false],
   pubsub_server: SphinxEx.PubSub,
-  live_view: [signing_salt: "oyZh1ui5"]
+  live_view: [signing_salt: "6TWjpef9"]
 
 # Configures Elixir's Logger
 config :logger, :console,
