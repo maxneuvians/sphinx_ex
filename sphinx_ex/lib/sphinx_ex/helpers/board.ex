@@ -1,4 +1,9 @@
 defmodule SphinxEx.Helpers.Board do
+  @spec new :: binary
+  def new() do
+    String.duplicate("0", 49)
+  end
+
   @spec to_map(binary) :: map
   def to_map(s) do
     s
@@ -18,7 +23,7 @@ defmodule SphinxEx.Helpers.Board do
     |> Enum.reduce("", fn x, x_acc ->
       0..6
       |> Enum.reduce(x_acc, fn y, y_acc ->
-        y_acc <> Map.get(m, {x,y}, "0")
+        y_acc <> Map.get(m, {x, y}, "0")
       end)
     end)
   end

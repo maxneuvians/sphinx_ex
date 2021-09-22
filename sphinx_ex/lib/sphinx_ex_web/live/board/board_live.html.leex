@@ -1,0 +1,22 @@
+<div>
+    <div class="grid grid-cols-7 gap-2">
+        <%= for x <- 0..6 do %>
+            <%= for y <- 0..6 do %>
+                <div phx-target=<%= @myself %> phx-click="action" phx-value-key="<%=x%>,<%=y%>" phx-value-value="<%= Map.get(@board, {x, y}) %>" class="h-16 bg-yellow-200 rounded-md flex items-center justify-center text-yellow-700text-2xl font-extrabold">
+                    <%= Map.get(@board, {x, y}) %>
+                </div>
+            <% end %>
+        <% end %>
+    </div>
+    <div class="grid grid-cols-3 gap-4 h-28 mt-8">
+        <div class="flex items-end justify-center wall">
+            Wall
+        </div>
+        <div class="flex items-end justify-center entrance">
+            Entrance
+        </div>
+        <div class="flex items-end justify-center treasure">
+            Treasure
+        </div>
+    </div>
+</div>

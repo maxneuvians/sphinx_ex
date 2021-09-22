@@ -18,6 +18,7 @@ defmodule SphinxExWeb.Router do
     pipe_through :browser
 
     live "/", PageLive, :index
+    live "/game", Game.GameLive, :index
   end
 
   # Other scopes may use custom stacks.

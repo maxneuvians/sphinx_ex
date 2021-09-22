@@ -46,13 +46,7 @@ defmodule SphinxEx.Helpers.Solution do
 
   @spec next_moves(map, {number, number}) :: list
   def next_moves(board, {x, y}) do
-    (x - 1)..(x + 1)
-    |> Enum.reduce([], fn x_pos, acc ->
-      (y - 1)..(y + 1)
-      |> Enum.reduce(acc, fn y_pos, l ->
-        l ++ [{x_pos, y_pos}]
-      end)
-    end)
+    [{x, y + 1}, {x, y - 1}, {x + 1, y}, {x - 1, y}]
     |> Enum.filter(&filter_coordinates/1)
     |> Enum.filter(fn c -> filter_walls(c, board) end)
   end

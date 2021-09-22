@@ -46,9 +46,9 @@ defmodule SphinxEx.Helpers.SolutionTest do
   end
 
   test "next_moves" do
-    assert next_moves(%{}, {0, 0}) == [{0, 0}, {0, 1}, {1, 0}, {1, 1}]
-    assert next_moves(%{}, {6, 6}) == [{5, 5}, {5, 6}, {6, 5}, {6, 6}]
-    assert next_moves(%{{1, 1} => "1"}, {0, 0}) == [{0, 0}, {0, 1}, {1, 0}, {1, 1}]
-    assert next_moves(%{{1, 1} => "2"}, {0, 0}) == [{0, 0}, {0, 1}, {1, 0}]
+    assert next_moves(%{}, {0, 0}) == [{0, 1}, {1, 0}]
+    assert next_moves(%{}, {6, 6}) == [{6, 5}, {5, 6}]
+    assert next_moves(%{{1, 1} => "1"}, {0, 0}) == [{0, 1}, {1, 0}]
+    assert next_moves(%{{1, 1} => "2"}, {0, 0}) == [{0, 1}, {1, 0}]
   end
 end
